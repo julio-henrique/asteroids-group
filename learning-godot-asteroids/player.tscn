@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://btr4a4dd7vbev"]
+
+[ext_resource type="Texture2D" uid="uid://dq3aks5txts6l" path="res://Sprite-0002.png" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://pm7jx4va0sw2" path="res://player.gd" id="1_onrkg"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_onrkg"]
+points = PackedVector2Array(-32, 23, -32, 9, 0, -23.5, 32, 8, 32, 23)
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_onrkg")
+rotation_speed = 2.0
+thrust_acceleration = 300.0
+max_speed = 550.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4flbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("ConvexPolygonShape2D_onrkg")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(0, -30)
+
+[node name="FireRateTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
